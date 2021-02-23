@@ -24,19 +24,27 @@ class PostsService {
 
   async createPost (newPostData) {
     const newPost = { ...newPostData, creationDate: new Date() }
-    const createdPost = await this.store.create(newPost)
 
-    return { createdPost }
+    try {
+      const createdPost = await this.store.create(newPost)
+      return { createdPost }
+    } catch (error) {
+      throw new Error(`The category with id "${newPostData.categoryId}" doesn't exists.`)
+    }
   }
 
   async updatePost (id, updateData) {
     const where = { id }
-    const wasUpdated = await this.store.update(where, updateData)
-    if (!wasUpdated) throw new Error('The post could not be updated.')
 
-    const updatedPost = await this.store.findOne(where)
+    try {
+      const wasUpdated = await this.store.update(where, updateData)
+      if (!wasUpdated) throw new Error('The post could not be updated.')
 
-    return { updatedPost }
+      const updatedPost = await this.store.findOne(where)
+      return { updatedPost }
+    } catch (error) {
+      throw new Error(`The category with id "${updateData.categoryId}" doesn't exists.`)
+    }
   }
 
   async deletePost (id) {
