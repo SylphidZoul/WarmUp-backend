@@ -36,6 +36,8 @@ const postModel = MYSQLService.define('posts', {
   }
 })
 
+postModel.belongsTo(categoryModel)
+
 postModel.sync().then(() => console.log('Posts table synced!'))
 
 module.exports = postModel
