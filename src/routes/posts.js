@@ -21,7 +21,7 @@ router.get('/:id', validateData(idParam, 'params'), async (req, res) => {
     const post = await postsService.getPost(req.params.id)
     Response.success(res, post, 200)
   } catch (error) {
-    Response.error(res, error.message, 400, error)
+    Response.error(res, error.message, 404, error)
   }
 })
 
