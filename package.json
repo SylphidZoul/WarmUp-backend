@@ -1,7 +1,7 @@
 {
   "name": "warmup-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend challenge for alkemy warmup week.",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node index",
@@ -10,9 +10,8 @@
     "test": "jest --verbose",
     "test-watch": "jest --watch"
   },
-  "keywords": [],
   "author": "Juan Cruz Cardozo",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
