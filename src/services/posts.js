@@ -43,7 +43,8 @@ class PostsService {
       const updatedPost = await this.store.findOne(where)
       return { updatedPost }
     } catch (error) {
-      throw new Error(`The category with id "${updateData.categoryId}" doesn't exists.`)
+      if (error.sql) throw new Error(`The category with id "${updateData.categoryId}" doesn't exists.`)
+      throw new Error(error.message)
     }
   }
 
